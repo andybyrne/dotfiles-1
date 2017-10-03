@@ -8,7 +8,7 @@
 #
 
 # Set computer name
-COMPUTERNAME="Nick Plekhanov's MBP"
+COMPUTERNAME="Andy's MBP"
 HOSTNAME='mbp'
 LOCALHOSTNAME='mbp'
 
@@ -23,10 +23,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-#sudo scutil --set ComputerName $COMPUTERNAME
-#sudo scutil --set HostName $HOSTNAME
-#sudo scutil --set LocalHostName $LOCALHOSTNAME
-#sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $LOCALHOSTNAME
+sudo scutil --set ComputerName $COMPUTERNAME
+sudo scutil --set HostName $HOSTNAME
+sudo scutil --set LocalHostName $LOCALHOSTNAME
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $LOCALHOSTNAME
 
 ###############################################################################
 # Apple software: Safari, Updater, iTunes, etc.                               #
@@ -56,7 +56,7 @@ defaults write com.apple.Safari HomePage -string "about:blank"
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
 
 # Check for software updates daily, not just once per week.
-defaults write com.assple.SoftwareUpdate ScheduleFrequency -int 1
+#defaults write com.assple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -71,11 +71,11 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Disable some menu bar icons: Time Machine, Volume and User
-for domain in ~/Library/Preferences/ByHost/com.apple.stytemuiserver.*; do
-  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-  "/System/Library/CoreServices/Menu Extras/User.menu"
-done
+#for domain in ~/Library/Preferences/ByHost/com.apple.stytemuiserver.*; do
+#  "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
+#  "/System/Library/CoreServices/Menu Extras/Volume.menu" \
+#  "/System/Library/CoreServices/Menu Extras/User.menu"
+#done
 
 ###############################################################################
 # Activity Monitor                                                            #
@@ -105,16 +105,16 @@ defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -i
 defaults -currentHost write com.apple.trackpad.enableSecondaryClick -bool true
 
 # Set a really fast keyboard repeat rate.
-defaults write -g KeyRepeat -int 0
+defaults write -g KeyRepeat -int 2
 
 # Disable press-and-hold for keys in favor of key repeat.
 defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Set language and text formats. (USD and Imperial Units)
-defaults write -g AppleLanguages -array "en" "nl"
-defaults write -g AppleLocale -string "en_US@currency=USD"
-defaults write -g AppleMeasurementUnits -string "Inches"
-defaults write -g AppleMetricUnits -bool false
+#defaults write -g AppleLanguages -array "en" "nl"
+#defaults write -g AppleLocale -string "en_US@currency=USD"
+#defaults write -g AppleMeasurementUnits -string "Inches"
+#defaults write -g AppleMetricUnits -bool false
 
 ###############################################################################
 # Screen
@@ -217,9 +217,6 @@ sudo pmset -a sms 0
 defaults write com.apple.dock show-process-indicators -bool true
 
 # Add several spacers
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Automatically hide and show the Dock
